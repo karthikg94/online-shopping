@@ -19,7 +19,7 @@
    </bean>
    
    <mvc:annotation-driven/>
-   <mvc:resources location="/assests/" mapping="/resources/**"></mvc:resources>
+   <mvc:resources location="/assests/" mapping="/resources/**"></mvc:resources> 
    
    
 </beans>
