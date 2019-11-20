@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.kzn</groupId>
 	<artifactId>shoppingbackend</artifactId>
-	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>shoppingbackend Maven Webapp</name>
+	<version>0.0.2-SNAPSHOT</version>
+	<name>shoppingbackend</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<java.ee.version>7.0</java.ee.version>
+		<spring.version>4.3.6.RELEASE</spring.version>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
@@ -23,6 +23,11 @@
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

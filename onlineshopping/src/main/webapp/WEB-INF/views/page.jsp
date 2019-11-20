@@ -24,9 +24,11 @@
   <!-- Bootstrap core CSS -->
   <link href="${css}/bootstrap.min.css" rel="stylesheet">
   <link href="${css}/bootstrap-theme.css" rel="stylesheet">
+  
 
   <!-- Custom styles for this template -->
   <link href="${css}/shop-homepage.css" rel="stylesheet">
+  <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
 
 </head>
 
@@ -42,11 +44,19 @@
   <c:if test="${userClickContact == true }">
   	<%@include file="contact.jsp" %>
   </c:if>
+  <c:if test="${userClickAllProducts == true }">
+  	<%@include file="listProducts.jsp" %>
+  </c:if>
+  <c:if test="${userClickCategoryProducts == true }">
+  	<%@include file="listProducts.jsp" %>
+  </c:if>
   <%@include file="./shared/footer.jsp" %>>
 
   <!-- Bootstrap core JavaScript -->
   <script src="${js}/jquery.min.js"></script>
   <script src="${js}/bootstrap.bundle.min.js"></script>
+  <script src="${js}/jquery.dataTables.js"></script>
+  <script src="${js}/dataTables.bootstrap.js"></script>
   <script src="${js}/myapp.js"></script>
 
 </body>
