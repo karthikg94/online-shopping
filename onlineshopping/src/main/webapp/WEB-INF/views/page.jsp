@@ -20,16 +20,16 @@
 	
   <script type="text/javascript">
   	window.menu = '${title}';
+  	window.contextRoot = '${contextRoot}';
   </script>
   <!-- Bootstrap core CSS -->
   <link href="${css}/bootstrap.min.css" rel="stylesheet">
   <link href="${css}/bootstrap-theme.css" rel="stylesheet">
   
-
+  <link href="${css}/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="${css}/shop-homepage.css" rel="stylesheet">
-  <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -50,6 +50,10 @@
   <c:if test="${userClickCategoryProducts == true }">
   	<%@include file="listProducts.jsp" %>
   </c:if>
+  <c:if test="${userClickSingleProductView == true }">
+  	<%@include file="singleProduct.jsp" %>
+  </c:if>
+  
   <%@include file="./shared/footer.jsp" %>>
 
   <!-- Bootstrap core JavaScript -->
@@ -57,6 +61,7 @@
   <script src="${js}/bootstrap.bundle.min.js"></script>
   <script src="${js}/jquery.dataTables.js"></script>
   <script src="${js}/dataTables.bootstrap.js"></script>
+  <script src="${js}/jquery.dataTables.min.js"></script>
   <script src="${js}/myapp.js"></script>
 
 </body>
