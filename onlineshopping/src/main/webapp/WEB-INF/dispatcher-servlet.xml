@@ -20,6 +20,7 @@
    		<property name="prefix" value="/WEB-INF/views/"></property>
    		<property name="suffix" value=".jsp"></property>
    </bean>
+   <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
    
    <mvc:annotation-driven/>
    <mvc:resources location="/assests/" mapping="/resources/**"></mvc:resources> 

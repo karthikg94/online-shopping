@@ -15,6 +15,7 @@ import net.kzn.shoppingbackend.dao.CategoryDAO;
 import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Category;
 import net.kzn.shoppingbackend.dto.Product;
+import net.kzn.shoppingbackend.exception.ProductNotFoundException;
 
 @Controller
 public class PageController {
@@ -74,9 +75,12 @@ public class PageController {
 	}
 	
 	@RequestMapping("/show/{id}/product")
-	public ModelAndView showSingleProductPage(@PathVariable("id") int id){
+	public ModelAndView showSingleProductPage(@PathVariable("id") int id) throws ProductNotFoundException{
 		ModelAndView mv = new ModelAndView("page");
 		Product product = productDAO.getProductById(id);
+		if(product == null){
+			throw new ProductNotFoundException();
+		}
 		product.setViews(product.getViews()+1);
 		product = productDAO.updateProduct(product);
 		mv.addObject("product", product);
