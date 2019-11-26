@@ -86,6 +86,11 @@
 								</sf:select>
 							</div>
 						</div>
+						<c:if test='${product.id == null}'>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategory">
+	  							Add New Category
+							</button>
+						</c:if>
 						<button type="submit" class="btn btn-primary">Submit</button>
 						<sf:hidden path="id" />
 						<sf:hidden path="code" />
@@ -119,4 +124,36 @@
 			</table>
 		</div>
 	</div>
+	<div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">ADD NEW CATEGORY</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <sf:form modelAttribute="category" action="${contextRoot}/manage/add/category" method="POST" id="categoryFormId">
+	      	<div class="modal-body">
+						<div class="form-group row">
+							<label class="col-form-label col-md-4" for="name">Category Name </label>
+							<div class="col-md-8">
+								<sf:input type="text" id="cname" path="name" placeholder="Category Name" class="form-control" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-md-4" for="name">Category Description </label>
+							<div class="col-md-8">
+								<sf:input type="text" id="cdesc" path="desc" placeholder="Category Description" class="form-control" />
+							</div>
+						</div>
+	      	</div>
+	       	<div class="modal-footer">
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        		<button type="submit" class="btn btn-primary">Save changes</button>
+      		</div>
+      		</sf:form>
+	    </div>
+	  </div>
+</div>
 </div>

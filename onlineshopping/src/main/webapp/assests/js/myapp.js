@@ -127,16 +127,20 @@ $(document).ready(
 					api.$('.switch input[type="checkbox"]').on('change',function(){
 						var check = $(this);
 						var checked = check.prop('checked');
-						var dmsg = (checked) ? "Do you want to Deactivate the Product?" : "Do you want to Aactivate the Product?";
+						var value = check.prop('value');
+						var dmsg = (checked) ? "Do you want to Deactivate the Product?" : "Do you want to Activate the Product?";
 						bootbox.confirm({
 							title : 'Product Activation & Deactivation',
 							size : 'medium',
 							message:dmsg,
 							callback: function (result) {
 								if(result){
-									bootbox.alert({
-									    message: "You are changin the status of Product "+check.prop('value'),
-									    size: 'small'
+									var url = window.contextRoot + '/manage/products/'+value+'/activate';
+									$.post(url,function(data){
+										bootbox.alert({
+										    message: data,
+										    size: 'medium'
+										});
 									});
 								}else{
 									check.prop('checked',!checked);
@@ -147,7 +151,35 @@ $(document).ready(
 				}
 			});
 		}
+		
+		var categroyTable = $('#categoryFormId');
+		if(categroyTable.length){
+			categroyTable.validate({
+				rules : {
+					name : {
+						required : true,
+						minlength : 2
+					},
+					desc : {
+						required : true
+					}
+				},
+				messages:{
+					name : {
+						required : 'Please enter the Category Name.',
+						minlength : 'Category Name should be greater than 2 Characters.'
+					},
+					desc : {
+						required : 'Please enter the Description'
+					}
+				},
+				errorElement : 'em',
+				errorPlacement : function(error,element){
+					error.addClass('form-text');
+					error.insertAfter(element);
+				}
+			});
+		}
+		
 	}
-	
-	
 );
