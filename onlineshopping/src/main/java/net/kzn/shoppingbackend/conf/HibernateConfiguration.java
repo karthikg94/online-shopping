@@ -8,6 +8,7 @@ import javax.transaction.TransactionManager;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Environment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -53,6 +54,7 @@ public class HibernateConfiguration {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", dialect);
 		properties.put("hibernate.show_sql", true);
+//		properties.put(Environment.HBM2DDL_AUTO, "update");
 		return properties;
 	}
 	

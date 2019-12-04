@@ -33,6 +33,12 @@
           <li class="nav-item" id="contact">
             <a class="nav-link" href="${contextRoot}/contact">Contact</a>
           </li>
+          <li class="nav-item" id="register">
+            <a class="nav-link" href="${contextRoot}/register">Sign Up</a>
+          </li>
+          <li class="nav-item" id="login">
+            <a class="nav-link" href="${contextRoot}/login">Login In</a>
+          </li>
         </ul>
       </div>
     </div>
