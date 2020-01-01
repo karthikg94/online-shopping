@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @NamedNativeQueries({
@@ -28,11 +30,17 @@ public class Address implements  Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@NotBlank(message="Please enter Address Line 1")
 	private String addressLine1;
+	@NotBlank(message="Please enter Address Line 2")
 	private String addressLine2;
+	@NotBlank(message="Please enter City")
 	private String city;
+	@NotBlank(message="Please enter State")
 	private String state;
+	@NotBlank(message="Please enter Country")
 	private String country;
+	@NotBlank(message="Please enter Postal Code")
 	private String postalCode;
 	private boolean billing;
 	private boolean shipping;

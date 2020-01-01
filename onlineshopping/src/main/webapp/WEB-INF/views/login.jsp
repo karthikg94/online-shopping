@@ -15,8 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <meta name="_csrf" content="${_csrf.token}"/>
-  <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
   <title>Online Shopping - ${title}</title>
 	
   <script type="text/javascript">
@@ -30,38 +29,47 @@
   <link href="${css}/jquery.dataTables.min.css" rel="stylesheet">
   <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="${css}/shop-homepage.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+  <link href="${css}/login.css" rel="stylesheet">
 </head>
 
 <body>
-	
-  <%@include file="./shared/navigation.jsp" %>
-  <c:if test="${userClickHome == true }">
-  	<%@include file="home.jsp" %>
-  </c:if>
-  <c:if test="${userClickAbout == true }">
-  	<%@include file="about.jsp" %>
-  </c:if>
-  <c:if test="${userClickContact == true }">
-  	<%@include file="contact.jsp" %>
-  </c:if>
-  <c:if test="${userClickAllProducts == true }">
-  	<%@include file="listProducts.jsp" %>
-  </c:if>
-  <c:if test="${userClickCategoryProducts == true }">
-  	<%@include file="listProducts.jsp" %>
-  </c:if>
-  <c:if test="${userClickSingleProductView == true }">
-  	<%@include file="singleProduct.jsp" %>
-  </c:if>
-  <c:if test="${userClickedManageProduct == true }">
-  	<%@include file="manageProduct.jsp" %>
-  </c:if>
-  <c:if test="${userClickedShowCart == true }">
-  	<%@include file="Cart.jsp" %>
-  </c:if>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active" id="home">
+						<span class="navbar-brand">Online Shopping</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+  <div class="wrapper fadeInDown">
+  
+  <div id="formContent">
+    <br><br>
+    <c:if test="${not empty errorMsg}">
+  		<div class="form-text">
+  			${errorMsg}
+  		</div>
+  		<br><br>
+  	</c:if>
+  	
+    <!-- Login Form -->
+    <form action="${contextRoot}/login" method="POST" id="loginForm">
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
   
   <%@include file="./shared/footer.jsp" %>
 

@@ -19,6 +19,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="firstName" path="firstName"
 									placeholder="First Name" class="form-control" />
+								<sf:errors path="firstName" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -27,6 +28,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="lastName" path="lastName"
 									placeholder="Last Name" class="form-control" />
+									<sf:errors path="lastName" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						
@@ -36,6 +38,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="email" path="email"
 									class="form-control" />
+									<sf:errors path="email" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						
@@ -45,6 +48,16 @@
 							<div class="col-md-8">
 								<sf:input type="password" id="password" path="password"
 									class="form-control" />
+									<sf:errors path="password" cssClass="form-text" element="em"></sf:errors>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-md-4" for="quantity">
+								Confirm Password </label>
+							<div class="col-md-8">
+								<sf:input type="password" id="confirmpassword" path="confirmPassword"
+									class="form-control" />
+								<sf:errors path="confirmPassword" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -53,6 +66,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="contactNumber" path="contactNumber"
 									class="form-control" />
+								<sf:errors path="contactNumber" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -65,6 +79,7 @@
     							<label class="radio-inline">
       								<sf:radiobutton path="role" value="supplier"/>Supplier
     							</label>
+    							<sf:errors path="role" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary" name="_eventId_billing" id="billing"> Next</button>

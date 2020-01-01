@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class User_Details implements Serializable {
@@ -20,16 +24,34 @@ public class User_Details implements Serializable {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotBlank(message="Please enter First Name")
 	private String firstName;
+	@NotBlank(message="Please enter Last Name")
 	private String lastName;
+	@NotBlank(message="Please enter Email Address")
+	@Email
 	private String email;
+	@NotBlank(message="Please enter Password")
 	private String password;
+	@NotBlank(message="Please enter Confirm Password")
+	@Transient
+	private String confirmPassword;
+	@NotBlank(message="Please enter Contact Number")
 	private String contactNumber;
+	@NotBlank(message="Please Choose Role")
 	private String role;
 	private boolean enablee;
 	@OneToOne(mappedBy="userDetails",cascade=CascadeType.ALL)
 	private Cart cart;
 	
+	
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	public int getId() {
 		return id;
 	}

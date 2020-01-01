@@ -1,6 +1,9 @@
 package net.kzn.shoppingbackend.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.kzn.shoppingbackend.dao.UserDAO;
@@ -14,6 +17,9 @@ public class RegisterHandler {
 	
 	@Autowired
 	UserDAO userDAO;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	public RegisterModel init(){
 		return new RegisterModel();
@@ -35,6 +41,7 @@ public class RegisterHandler {
 			user.setCart(cart);
 			cart.setUserDetails(user);
 		}
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		int userId = userDAO.addUserDetails(user);
 		//Address details
 		user.setId(userId);
@@ -42,6 +49,20 @@ public class RegisterHandler {
 		address.setBilling(true);
 		address.setUser_Details(user);
 		return "success";
+	}
+	
+	public String validate(User_Details user,MessageContext error){
+		String transitionState = "success";
+		if(!user.getPassword().equals(user.getConfirmPassword())){
+			error.addMessage(new MessageBuilder().error().source("confirmPassword").defaultText("Password and Confirm Password Mismatch").build());
+			transitionState = "failure";
+		}
+		User_Details result = userDAO.getUserByEmail(user.getEmail());
+		if(result != null){
+			error.addMessage(new MessageBuilder().error().source("email").defaultText("Email Already Exists").build());
+			transitionState = "failure";
+		}
+		return transitionState;
 	}
 
 }

@@ -10,7 +10,6 @@ public interface UserDAO {
 
 	public Integer addUserDetails(User_Details user);
 	public boolean addAddress(Address address);
-	public boolean updateCart(Cart cart);
 	public User_Details getUserByEmail(String email);
 	public boolean addAdress(Address address);
 	public Address getBillingAddress(int userId);

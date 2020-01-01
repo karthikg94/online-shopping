@@ -17,11 +17,22 @@ $(document).ready(
 			$('#manageProducts').addClass('active');
 			$('#home').removeClass('active');
 			break;
+		case 'Show Cart':
+			$('#userCart').addClass('active');
+			$('#home').removeClass('active');
+			break;
 		default:
 			$('#home').addClass('active');
 			$('#a_'+menu).addClass('active');
 			break;
 		}
+		
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		 
+		$(document).ajaxSend(function(e, xhr, options) {
+		    xhr.setRequestHeader(header, token);
+		});
 		
 		var table = $('#productListTable');
 		if(table.length){
@@ -63,10 +74,14 @@ $(document).ready(
 						bSortable : false,
 						 mRender : function(data,type,row){
 							 var str1 = "";
-							 if(row.quantity < 1){
-								  str1 = '<a class="btn btn-success disabled" href = "javascript:void(0)"><span class="glyphicon glyphicon-eye-open">Add To Cart</span></a>';
+							 if(window.userRole == 'admin'){
+								 str1 = '<a class="btn btn-success" href = "'+window.contextRoot + '/manage/'+data+'/product"><span class="glyphicon glyphicon-eye-open">Edit</span></a>'; 
 							 }else{
-								  str1 = '<a class="btn btn-success" href = "'+window.contextRoot + '/cart/add/'+data+'/product"><span class="glyphicon glyphicon-eye-open">Add To Cart</span></a>';
+								 if(row.quantity < 1){
+									  str1 = '<a class="btn btn-success disabled" href = "javascript:void(0)"><span class="glyphicon glyphicon-eye-open">Add To Cart</span></a>';
+								 }else{
+									  str1 = '<a class="btn btn-success" href = "'+window.contextRoot + '/cart/add/'+data+'/product"><span class="glyphicon glyphicon-eye-open">Add To Cart</span></a>';
+								 }
 							 }
 							 var str = '<a class="btn btn-primary" href = "'+window.contextRoot + '/show/'+data+'/product" ><span class="glyphicon glyphicon-eye-open">View</span></a>';
 							 return str+"   "+str1;
@@ -171,6 +186,37 @@ $(document).ready(
 					},
 					desc : {
 						required : 'Please enter the Description'
+					}
+				},
+				errorElement : 'em',
+				errorPlacement : function(error,element){
+					error.addClass('form-text');
+					error.insertAfter(element);
+				}
+			});
+		}
+		
+		var loginForm = $('#loginForm');
+		if(loginForm.length){
+			loginForm.validate({
+				rules : {
+					username : {
+						required : true,
+						email : true
+					},
+					password : {
+						required : true,
+						minlength : 4
+					}
+				},
+				messages:{
+					username : {
+						required : 'Please enter the User Name.',
+						email : 'Please enter the valid email address.'
+					},
+					password : {
+						required : 'Please enter the Password',
+						minlength : 'Password should be greater than 4 Characters.'
 					}
 				},
 				errorElement : 'em',

@@ -19,6 +19,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="addressLine1" path="addressLine1"
 									placeholder="Address Line 1" class="form-control" />
+								<sf:errors path="addressLine1" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -27,6 +28,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="addressLine2" path="addressLine2"
 									placeholder="Address Line 2" class="form-control" />
+								<sf:errors path="addressLine2" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						
@@ -35,6 +37,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="city" path="city"
 									class="form-control" />
+								<sf:errors path="city" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						
@@ -43,6 +46,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="state" path="state"
 									class="form-control" />
+								<sf:errors path="state" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -51,6 +55,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="country" path="country"
 									class="form-control" />
+								<sf:errors path="country" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -59,6 +64,7 @@
 							<div class="col-md-8">
 								<sf:input type="text" id="postalCode" path="postalCode"
 									class="form-control" />
+								<sf:errors path="postalCode" cssClass="form-text" element="em"></sf:errors>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary" name="_eventId_personal"> Previous - Personal</button>

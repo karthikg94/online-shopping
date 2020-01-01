@@ -18,6 +18,7 @@
 				<h4>${product.name}</h4><br></hr>
 				<p>${product.description}</p><br></hr>
 				<h3>Price : ${product.unit_price}</h3><br></hr>
+				<security:authorize access="hasAuthority('user')">
 				<c:choose>
 					<c:when test="${product.quantity < 1}">
 						<p>Quantity Avaliable : <span style="color:red">Out of stock</span></p><br></hr>
@@ -28,6 +29,10 @@
 						<a  href ="${contextRoot}/cart/add/${product.id}/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart">Add to cart</span></a>
 					</c:otherwise>
 				</c:choose>
+				</security:authorize>
+				<security:authorize access="hasAuthority('admin')">
+					<a  href ="${contextRoot}/manage/${product.id}/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart">Edit</span></a>
+				</security:authorize>
 				<a  href ="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
 		</div>
 	</div>

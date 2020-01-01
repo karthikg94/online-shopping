@@ -27,7 +27,7 @@ public class HibernateConfiguration {
 	private static String username="sa";
 	private static String password="";
 	
-	@Bean
+	@Bean("datasource")
 	public DataSource getDataSource(){
 		System.out.println("######## started DataSource");
 		BasicDataSource datasource = new BasicDataSource();
